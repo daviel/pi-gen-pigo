@@ -1,0 +1,10 @@
+[Unit]
+Description=light up the display
+
+[Service]
+ExecStart=gpio -g pwm 13 1024
+ExecStart=gpio -g mode 13 pwm
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

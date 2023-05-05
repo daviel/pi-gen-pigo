@@ -1,0 +1,10 @@
+[Unit]
+Description=pigogui
+
+[Service]
+ExecStart=/opt/pigo/pigogui/start.sh
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
