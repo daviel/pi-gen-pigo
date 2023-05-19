@@ -1,6 +1,3 @@
 #!/bin/bash -e
 
-apt update
-apt install git -y
-git clone https://github.com/daviel/pigo-config /tmp/pigo-config
-/tmp/pigo-config/install.sh
+curl https://raw.githubusercontent.com/daviel/pigo-config/main/install.sh | sh
