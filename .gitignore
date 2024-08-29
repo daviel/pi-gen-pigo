@@ -4,4 +4,3 @@ config
 postrun.sh
 .pc
 *-pc
-apt-cacher-ng/
