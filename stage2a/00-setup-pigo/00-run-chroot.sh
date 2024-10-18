@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-curl https://raw.githubusercontent.com/daviel/pigo-config/main/install.sh | sh
+curl https://raw.githubusercontent.com/daviel/pigo-config/main/update.sh | sh
