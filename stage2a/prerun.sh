@@ -1,3 +1,5 @@
 #!/bin/bash -e
 
-curl https://raw.githubusercontent.com/daviel/pigo-config/main/update.sh | sh
+if [ ! -d "${ROOTFS_DIR}" ]; then
+	copy_previous
+fi
