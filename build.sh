@@ -68,6 +68,8 @@ EOF
 			log "Begin ${SUB_STAGE_DIR}/${i}-run.sh"
 			./${i}-run.sh
 			log "End ${SUB_STAGE_DIR}/${i}-run.sh"
+		elif [ -f ${i}-run.sh ]; then
+			log "Skip ${SUB_STAGE_DIR}/${i}-run.sh (not executable)"
 		fi
 		if [ -f ${i}-run-chroot.sh ]; then
 			log "Begin ${SUB_STAGE_DIR}/${i}-run-chroot.sh"
@@ -205,6 +207,7 @@ export TARGET_HOSTNAME=${TARGET_HOSTNAME:-raspberrypi}
 export FIRST_USER_NAME=${FIRST_USER_NAME:-pi}
 export FIRST_USER_PASS
 export DISABLE_FIRST_BOOT_USER_RENAME=${DISABLE_FIRST_BOOT_USER_RENAME:-0}
+export PASSWORDLESS_SUDO="${PASSWORDLESS_SUDO:-0}"
 export WPA_COUNTRY
 export ENABLE_SSH="${ENABLE_SSH:-0}"
 export PUBKEY_ONLY_SSH="${PUBKEY_ONLY_SSH:-0}"
@@ -241,6 +244,8 @@ export QUILT_PATCHES
 export QUILT_NO_DIFF_INDEX=1
 export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
+
+export ENABLE_CLOUD_INIT=${ENABLE_CLOUD_INIT:-1}
 
 # shellcheck source=scripts/common
 source "${SCRIPT_DIR}/common"

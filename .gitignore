@@ -4,3 +4,4 @@ config
 postrun.sh
 .pc
 *-pc
+.vscode/
