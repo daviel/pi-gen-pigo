@@ -1,4 +1,4 @@
-wpasupplicant firmware-brcm80211
+wpasupplicant firmware-brcm80211 wireless-tools
 raspberrypi-net-mods
 network-manager
 net-tools
