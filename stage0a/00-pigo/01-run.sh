@@ -2,11 +2,12 @@
 
 # ── Stage-0-Korrekturen ───────────────────────────────────────────────────────
 
-# armhf-Architektur entfernen; auf arm64-only-System nicht benötigt
-dpkg --remove-architecture armhf 2>/dev/null || true
-
+# armhf-Pakete und -Architektur entfernen; arm64-only-System
 # Kernel-Headers entfernen (~150 MB, nicht benötigt im Produktionssystem)
 on_chroot << EOF
+apt-get purge -y '*:armhf' 2>/dev/null || true
+dpkg --remove-architecture armhf 2>/dev/null || true
+apt-get update
 apt-get purge -y linux-headers-rpi-v8 linux-headers-rpi-2712 2>/dev/null || true
 apt-get autoremove --purge -y
 EOF
