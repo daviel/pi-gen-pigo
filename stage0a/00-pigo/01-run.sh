@@ -80,18 +80,8 @@ usermod --pass='*' root
 # Timezone anwenden
 dpkg-reconfigure -f noninteractive tzdata
 
-# Locale sicherstellen
+# Locale und Konsole konfigurieren (Debconf-Werte via 00-debconf vorbelegt)
 dpkg-reconfigure -f noninteractive locales
-
-# Tastatur-Debconf setzen und Konsole konfigurieren
-debconf-set-selections << DEBEOF
-console-setup   console-setup/charmap47                      select  UTF-8
-keyboard-configuration  keyboard-configuration/xkb-keymap   select  ${KEYBOARD_KEYMAP}
-keyboard-configuration  keyboard-configuration/variant       select  ${KEYBOARD_LAYOUT}
-keyboard-configuration  keyboard-configuration/model         select  Generic 105-key (Intl) PC
-keyboard-configuration  keyboard-configuration/altgr         select  The default for the keyboard layout
-keyboard-configuration  keyboard-configuration/compose       select  No compose key
-DEBEOF
 sed -i 's/^FONTFACE=.*/FONTFACE=""/;s/^FONTSIZE=.*/FONTSIZE=""/' /etc/default/console-setup
 sed -i "s/PLACEHOLDER//"                                          /etc/default/keyboard
 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure keyboard-configuration console-setup
